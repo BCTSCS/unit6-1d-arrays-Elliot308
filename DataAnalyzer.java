@@ -35,7 +35,7 @@ public class DataAnalyzer {
         System.out.println(searchList(arr, 40));
         String filename = "numbers.txt";
         //try{
-            File f = new File("numbers.txt");
+            File f = new File("./Data/genres.txt");
             Scanner input = new Scanner(f);
             int[] num_list = {};
             for (int i = 0; i < 100; i++){

@@ -27,7 +27,7 @@ public class FileOperator {
     public String[] toStringArray(int arraySize){  
         String[] word_list = new String[arraySize];
         
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < arraySize; i++){
             word_list[i] = fileReader.nextLine();
         }
         return word_list;
@@ -36,7 +36,7 @@ public class FileOperator {
     public int[] toIntArray(int arraySize){  
         int[] num_list = new int[arraySize];
         
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < arraySize; i++){
             num_list[i] = Integer.valueOf(fileReader.nextLine());
         }
         return num_list;
@@ -45,15 +45,18 @@ public class FileOperator {
     public double[] toDoubleArray(int arraySize){
         double[] num_list = new double[arraySize];
 
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < arraySize; i++){
             num_list[i] = Double.valueOf(fileReader.nextLine());
         }
         return num_list;
     }
 
     public static void main(String[] args) {
-        FileOperator A = new FileOperator("albums.txt");
-        System.out.println(A.toStringArray(7));
+        FileOperator A = new FileOperator("./Data/albums.txt");
+        String[] albums = A.toStringArray(7);
+        for(String album: albums){
+            System.out.println(album);
+        }
 
     }
 }
