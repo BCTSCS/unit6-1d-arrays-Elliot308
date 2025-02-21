@@ -51,12 +51,29 @@ public class FileOperator {
         return num_list;
     }
 
+    public static int countInstances(String target, String[] list){
+        int count = 0;
+        for (String word : list){
+            if(target.equals(word)){
+                count++;
+            }
+        }
+        return count;
+    }
     public static void main(String[] args) {
         FileOperator A = new FileOperator("./Data/albums.txt");
+        FileOperator B = new FileOperator("./Data/artists.txt");
         String[] albums = A.toStringArray(7);
         for(String album: albums){
             System.out.println(album);
         }
+        String[] artists = B.toStringArray(498);
+        String targ_artist = "The Beatles";
+        System.out.println("There are " + countInstances(targ_artist, artists) + " occurences of the artist: " + targ_artist);
+        String targ_artist2 = "Love";
+        System.out.println("There are " + countInstances(targ_artist2, artists) + " occurences of the artist: " + targ_artist2);
+        String targ_artist3 = "Prince";
+        System.out.println("There are " + countInstances(targ_artist3, artists) + " occurences of the artist: " + targ_artist3);
 
     }
 }
