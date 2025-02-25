@@ -92,7 +92,7 @@ public class FileOperator {
         return index;
     }
 
-        
+    
     public static int Biggest_Bust(int[] prev_record, int[] curr_record){
         Double improvement = 0.0;
         int index = 0;
