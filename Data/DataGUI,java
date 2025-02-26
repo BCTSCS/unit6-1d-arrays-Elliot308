@@ -1,0 +1,62 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class DataGUI extends JFrame {
+    private JTextField inputArea;
+    private JTextArea result;
+    
+    FileOperator A = new FileOperator("./Data/albums.txt");
+    FileOperator B = new FileOperator("./Data/artists.txt");
+    FileOperator C = new FileOperator("./Data/genres.txt");
+    String[] albums = A.toStringArray(498);
+    String[] artists = B.toStringArray(498);
+    String[] genres = C.toStringArray(498);
+
+    public dataGUI(){
+        setTitle("Smart Playlist");
+        setSize(500,500);
+        setLayout(new FlowLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        inputArea = new JTextField(20);
+        JButton LCArtistButton = new JButton("Find least common artist");
+        JButton LCGenreButton = new JButton("Find least common genre");
+        JButton GenrebyArtistButton = new JButton("Find genres for a specific artist");
+        result = new JTextArea(10, 40);
+        result.setEditable(false);
+
+        add(inputArea);
+        add(LCArtistButton);
+        add(LCGenreButton);
+        add(GenrebyArtistButton);
+        add(result);
+
+        LCArtistButton.addActionListener(e -> LCArtist());
+        LCGenreButton.addActionListener(e -> LCGenre());
+        GenrebyArtistButton.addActionListener(e -> GenrebyArtist());
+
+    }
+
+    private void LCArtist(){
+        String lca = DataRunner.least_common(artists);
+        result.setText("The least common artist is: " + lca);
+    }
+
+    private void LCGenre(){
+        String lcg = DataRunner.least_common(genres);
+        result.setText("The least common artist is: " + lcg);
+    }
+
+    private void GenrebyArtist(){
+        String[] genres = DataRunner.genre_artist(genres, artists, inputField.getText());
+        String list = "";
+        for(String genre : genres){
+            list+=(genre + "\n");
+        }
+        result.setText(inputField.getText() + " has explored genres of: " + list);
+    }
+
+    public static void main(String[] args){
+        SwingUtilities.invokeLater(() -> new DataGUI().setVisible(true));
+    }
+}
