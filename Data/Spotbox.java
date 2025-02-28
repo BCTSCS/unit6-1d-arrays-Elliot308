@@ -2,12 +2,17 @@ package Data;
 import java.util.Scanner;
 
 public class Spotbox {
-    FileOperator A = new FileOperator("./Data/albums.txt");
-    FileOperator B = new FileOperator("./Data/artists.txt");
-    FileOperator C = new FileOperator("./Data/genres.txt");
-    private String[] albums = A.toStringArray(498);
-    private String[] artists = B.toStringArray(498);
-    private String[] genres = C.toStringArray(498);
+    private String[] albums;
+    private String[] artists;
+    private String[] genres;
+    public Spotbox(String alb_file, String art_file, String gen_file){
+        FileOperator A = new FileOperator("./Data/" + alb_file + ".txt");
+        FileOperator B = new FileOperator("./Data/" + art_file + ".txt");
+        FileOperator C = new FileOperator("./Data/" + gen_file + ".txt");
+        albums = A.toStringArray(498);
+        artists = B.toStringArray(498);
+        genres = C.toStringArray(498);
+    }
   public static int countInstances(String target, String[] list){
     int count = 0;
     for (String word : list){
@@ -43,24 +48,6 @@ public static String genre_artist(String[] genre_list, String[] artist_list, Str
     return msg;
 }
   public static void main(String[] args) {
-    // String targ_artist = "The Beatles";
-    // System.out.println("There are " + countInstances(targ_artist, artists) + " occurences of the artist: " + targ_artist);
-    // String targ_artist2 = "Love";
-    // System.out.println("There are " + countInstances(targ_artist2, artists) + " occurences of the artist: " + targ_artist2);
-    // String targ_artist3 = "Prince";
-    // System.out.println("There are " + countInstances(targ_artist3, artists) + " occurences of the artist: " + targ_artist3);
-
-    // //least common genre
-    // System.out.println("The least common genre is " + least_common(genres));
-
-    // //find genres by artist
-    // System.out.println(genre_artist(genres, artists, "The Beatles"));
-    // System.out.println(genre_artist(genres, artists, "Love"));
-    // System.out.println(genre_artist(genres, artists, "Prince"));
-    
-
-
-    
 
     
     
