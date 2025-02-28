@@ -47,7 +47,7 @@ public static String genre_artist(String[] genre_list, String[] artist_list, Str
     }
     return msg;
 }
-  public static void main(String[] args) {
+public static void main(String[] args) {
 
     
     
